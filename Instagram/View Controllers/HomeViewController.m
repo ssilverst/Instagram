@@ -14,6 +14,7 @@
 #import "Post.h"
 #import "HomeCell.h"
 #import "SVProgressHUD.h"
+#import "PostDetailsViewController.h"
 
 @interface HomeViewController () 
 @property (strong, nonatomic) NSArray *posts;
@@ -54,7 +55,11 @@
 {
     HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeCell"];
     Post *post = self.posts[indexPath.row];
+    
+
     cell.captionLabel.text = post.caption;
+    cell.usernameLabel.text = post.author.username;
+    cell.numberOfLikes.text = [NSString stringWithFormat:@"%@", post.likeCount];
     PFFileObject *userImageFile = post.image;
     [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {
@@ -64,6 +69,7 @@
     return cell;
     
 }
+
 - (void) fetchPosts
 {
     // construct PFQuery
@@ -88,14 +94,19 @@
 }
 
 
-/*
+
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
+     if ([[segue identifier] isEqualToString:@"detailsSegue"]) {
+         HomeCell *tappedCell = sender;
+         NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+         Post *post = self.posts[indexPath.row];
+         UINavigationController *navigationController = [segue destinationViewController];
+         PostDetailsViewController *deetController = (PostDetailsViewController *)navigationController.topViewController;
+         deetController.post = post;
+     }
  }
- */
 
 @end

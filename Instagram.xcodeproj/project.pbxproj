@@ -18,6 +18,7 @@
 		A5A1CB7C22D3ED4700419888 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A1CB7B22D3ED4700419888 /* Post.m */; };
 		A5A1CB8022D3EF0500419888 /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A1CB7F22D3EF0500419888 /* HomeCell.m */; };
 		A5A1CB8322D3FE2F00419888 /* NewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A1CB8222D3FE2F00419888 /* NewPostViewController.m */; };
+		A5A1CB8622D4481900419888 /* PostDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A1CB8522D4481900419888 /* PostDetailsViewController.m */; };
 		A5C6348922D2A6E6008DF312 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C6348822D2A6E6008DF312 /* LoginViewController.m */; };
 		A5C6348B22D2A94D008DF312 /* No. Seven Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A5C6348A22D2A94D008DF312 /* No. Seven Regular.otf */; };
 		A5C6348E22D2AEFF008DF312 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C6348D22D2AEFF008DF312 /* HomeViewController.m */; };
@@ -67,6 +68,8 @@
 		A5A1CB7F22D3EF0500419888 /* HomeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCell.m; sourceTree = "<group>"; };
 		A5A1CB8122D3FE2F00419888 /* NewPostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewPostViewController.h; sourceTree = "<group>"; };
 		A5A1CB8222D3FE2F00419888 /* NewPostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewPostViewController.m; sourceTree = "<group>"; };
+		A5A1CB8422D4481900419888 /* PostDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostDetailsViewController.h; sourceTree = "<group>"; };
+		A5A1CB8522D4481900419888 /* PostDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostDetailsViewController.m; sourceTree = "<group>"; };
 		A5C6348722D2A6E6008DF312 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		A5C6348822D2A6E6008DF312 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		A5C6348A22D2A94D008DF312 /* No. Seven Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "No. Seven Regular.otf"; path = "../../../Downloads/No. Seven Regular.otf"; sourceTree = "<group>"; };
@@ -194,6 +197,8 @@
 				A5C6348D22D2AEFF008DF312 /* HomeViewController.m */,
 				A5A1CB8122D3FE2F00419888 /* NewPostViewController.h */,
 				A5A1CB8222D3FE2F00419888 /* NewPostViewController.m */,
+				A5A1CB8422D4481900419888 /* PostDetailsViewController.h */,
+				A5A1CB8522D4481900419888 /* PostDetailsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -433,6 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5A1CB8322D3FE2F00419888 /* NewPostViewController.m in Sources */,
+				A5A1CB8622D4481900419888 /* PostDetailsViewController.m in Sources */,
 				A5A1CB8022D3EF0500419888 /* HomeCell.m in Sources */,
 				A5A1CB7C22D3ED4700419888 /* Post.m in Sources */,
 				A56276F822D187020035BF92 /* main.m in Sources */,
