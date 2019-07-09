@@ -64,7 +64,7 @@
     // set user properties
     newUser.username = self.usernameField.text;
     newUser.password = self.passwordField.text;
-    newUser.email = self.emailField.text;
+    //newUser.email = self.emailField.text;
 
     // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {

@@ -12,7 +12,9 @@
 
 @interface HomeCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet PFFileObject *photoImageView;
+@property (weak, nonatomic) IBOutlet UILabel *captionLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *photo;
+
 @property (strong, nonatomic) Post *post;
 
 @end
