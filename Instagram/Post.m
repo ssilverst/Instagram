@@ -8,6 +8,7 @@
 
 #import "Post.h"
 #import "Parse/Parse.h"
+#import "DateTools.h"
 
 @implementation Post
 

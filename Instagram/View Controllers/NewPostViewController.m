@@ -45,7 +45,7 @@
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     
     // Do something with the images (based on your use case)
-    self.selectedPhoto = [self resizeImage:originalImage withSize:CGSizeMake(50.0, 50.0)];
+    self.selectedPhoto = [self resizeImage:editedImage withSize:CGSizeMake(50.0, 50.0)];
     if (self.selectedPhoto != nil)
     {
         self.photoView.image = self.selectedPhoto;

@@ -18,7 +18,8 @@
     [super viewDidLoad];
     self.captionLabel.text = self.post.caption;
     self.usernameLabel.text = self.post.author.username;
-    self.likeCount.text = [NSString stringWithFormat:@"%@", self.post.likeCount];
+    self.likeCount.text = [[NSString stringWithFormat:@"%@", self.post.likeCount] stringByAppendingString:@"likes"];
+    self.dateLabel.text = [NSString stringWithFormat:@"%@", self.post.createdAt];
     PFFileObject *userImageFile = self.post.image;
     [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {

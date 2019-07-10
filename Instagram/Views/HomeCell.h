@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *numberOfComments;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIImageView *profileIcon;
+@property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
 
 @property (strong, nonatomic) Post *post;
 

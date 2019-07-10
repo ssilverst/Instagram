@@ -15,6 +15,7 @@
 #import "HomeCell.h"
 #import "SVProgressHUD.h"
 #import "PostDetailsViewController.h"
+#import "DateTools.h"
 
 @interface HomeViewController () 
 @property (strong, nonatomic) NSArray *posts;
@@ -60,6 +61,10 @@
     cell.captionLabel.text = post.caption;
     cell.usernameLabel.text = post.author.username;
     cell.numberOfLikes.text = [NSString stringWithFormat:@"%@", post.likeCount];
+    NSDate *date = post.createdAt;
+    
+    NSString *timeAgoString = [NSString stringWithFormat:@"%@", date.timeAgoSinceNow];
+    cell.timestampLabel.text = timeAgoString;
     PFFileObject *userImageFile = post.image;
     [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {
