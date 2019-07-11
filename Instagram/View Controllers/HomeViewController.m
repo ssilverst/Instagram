@@ -28,7 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self fetchPosts];
@@ -55,20 +55,26 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeCell"];
-    Post *post = self.posts[indexPath.row];
-    
+    cell.profileIcon.layer.cornerRadius = cell.profileIcon.frame.size.width/2;
+    cell.post = self.posts[indexPath.row];
 
-    cell.captionLabel.text = post.caption;
-    cell.usernameLabel.text = post.author.username;
-    cell.numberOfLikes.text = [NSString stringWithFormat:@"%@", post.likeCount];
-    NSDate *date = post.createdAt;
+    cell.captionLabel.text = cell.post.caption;
+    cell.usernameLabel.text = cell.post.author.username;
+    cell.numberOfLikes.text = [NSString stringWithFormat:@"%@", cell.post.likeCount];
+    NSDate *date = cell.post.createdAt;
     
     NSString *timeAgoString = [NSString stringWithFormat:@"%@", date.timeAgoSinceNow];
     cell.timestampLabel.text = timeAgoString;
-    PFFileObject *userImageFile = post.image;
+    PFFileObject *userImageFile = cell.post.image;
     [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {
             cell.photo.image = [UIImage imageWithData:imageData];
+        }
+    }];
+    userImageFile = cell.post.author[@"profileImage"];
+    [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+        if (!error) {
+            cell.profileIcon.image = [UIImage imageWithData:imageData];
         }
     }];
     return cell;

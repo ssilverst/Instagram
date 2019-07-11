@@ -17,6 +17,7 @@
 		A562770D22D187020035BF92 /* InstagramUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A562770C22D187020035BF92 /* InstagramUITests.m */; };
 		A5685A2222D5553400064EA1 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5685A2122D5553400064EA1 /* ProfileViewController.m */; };
 		A5685A2522D55FCA00064EA1 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5685A2422D55FCA00064EA1 /* EditViewController.m */; };
+		A5685A2922D56F1500064EA1 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5685A2822D56F1500064EA1 /* PostCell.m */; };
 		A5A1CB7C22D3ED4700419888 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A1CB7B22D3ED4700419888 /* Post.m */; };
 		A5A1CB8022D3EF0500419888 /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A1CB7F22D3EF0500419888 /* HomeCell.m */; };
 		A5A1CB8322D3FE2F00419888 /* NewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A1CB8222D3FE2F00419888 /* NewPostViewController.m */; };
@@ -68,6 +69,8 @@
 		A5685A2122D5553400064EA1 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		A5685A2322D55FCA00064EA1 /* EditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
 		A5685A2422D55FCA00064EA1 /* EditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
+		A5685A2722D56F1500064EA1 /* PostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
+		A5685A2822D56F1500064EA1 /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
 		A5A1CB7A22D3ED4700419888 /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		A5A1CB7B22D3ED4700419888 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		A5A1CB7E22D3EF0500419888 /* HomeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCell.h; sourceTree = "<group>"; };
@@ -190,6 +193,8 @@
 			children = (
 				A5A1CB7E22D3EF0500419888 /* HomeCell.h */,
 				A5A1CB7F22D3EF0500419888 /* HomeCell.m */,
+				A5685A2722D56F1500064EA1 /* PostCell.h */,
+				A5685A2822D56F1500064EA1 /* PostCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -447,6 +452,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5685A2922D56F1500064EA1 /* PostCell.m in Sources */,
 				A5A1CB8322D3FE2F00419888 /* NewPostViewController.m in Sources */,
 				A5685A2222D5553400064EA1 /* ProfileViewController.m in Sources */,
 				A5A1CB8622D4481900419888 /* PostDetailsViewController.m in Sources */,
