@@ -1,8 +1,8 @@
-# Project 4 - *Instasam (insert cringe for pun)*
+# Project 4 - *Pixelgram*
 
-**Instasam** is a photo sharing app using Parse as its backend.
+**Pixelgram** is a photo sharing app using Parse as its backend.
 
-Time spent: **X** hours spent in total
+Time spent: **40** hours spent in total
 
 ## User Stories
 
