@@ -40,15 +40,14 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. I would like to discuss how to go about storing different objects like dictionaries with Parse. I read up on treating array fields of parse objects like sets and want to know more about other ways you can treat parse objects differently.
+2. I would like to learn how to add things like followers and following.
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
+<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />![](instagram.gif)
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Credits
@@ -56,15 +55,16 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
-
+- [DateTools](https://github.com/MatthewYork/DateTools) - display time since
+- [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD) - loading bar
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+The biggest challenging was understanding how Parse works and how to access elements. Especially when I was trying to create a set, I needed to figure out what things I could and couldn't do with Parse.
 
 ## License
 
-Copyright [yyyy] [name of copyright owner]
+Copyright [2019] [Sam Silverstein]
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

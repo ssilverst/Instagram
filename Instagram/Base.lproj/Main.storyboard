@@ -503,6 +503,7 @@
                     <tabBarItem key="tabBarItem" title="" image="profile_tab" id="hPT-NN-zkl"/>
                     <navigationItem key="navigationItem" id="p7q-1X-fqX"/>
                     <connections>
+                        <outlet property="editButton" destination="Rmc-pY-rLm" id="Ra1-oy-CWr"/>
                         <outlet property="profileDescription" destination="PfU-Px-Itt" id="qsF-Xe-Oz8"/>
                         <outlet property="profileImage" destination="sXe-m5-dkF" id="zOu-4L-HZN"/>
                         <outlet property="profileName" destination="Qe7-e7-apP" id="GQX-gg-6Iu"/>
@@ -709,7 +710,7 @@
         <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dKI-a3-0Kk"/>
+        <segue reference="2na-2J-rKy"/>
         <segue reference="ddy-gJ-VKb"/>
         <segue reference="aB5-Ho-QMZ"/>
     </inferredMetricsTieBreakers>

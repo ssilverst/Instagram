@@ -28,6 +28,11 @@
     {
         self.me = [PFUser currentUser];
     }
+    else
+    {
+        self.editButton.hidden = YES;
+
+    }
 
     self.profilePostsView.dataSource = self;
     self.profilePostsView.delegate = self;

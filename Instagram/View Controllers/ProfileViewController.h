@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *profileName;
 @property (weak, nonatomic) IBOutlet UILabel *profileDescription;
 @property (weak, nonatomic) IBOutlet UILabel *profileUsername;
+@property (weak, nonatomic) IBOutlet UIButton *editButton;
 
 
 @end
