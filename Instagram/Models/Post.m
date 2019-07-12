@@ -9,6 +9,7 @@
 #import "Post.h"
 #import "Parse/Parse.h"
 #import "DateTools.h"
+#import "SVProgressHUD.h"
 
 @implementation Post
 
@@ -26,7 +27,8 @@
 }
 
 + (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion {
-    
+    [SVProgressHUD show];
+
     Post *newPost = [Post new];
     newPost.image = [self getPFFileFromImage:image];
     newPost.author = [PFUser currentUser];
@@ -35,6 +37,8 @@
     newPost.commentCount = @(0);
     newPost.usersWhoLike = [[NSArray alloc] init];
     [newPost saveInBackgroundWithBlock: completion];
+    [SVProgressHUD dismiss];
+    
 }
 
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {

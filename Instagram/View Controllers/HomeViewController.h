@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeViewController : UIViewController <HomeCellDelegate, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate>
+@interface HomeViewController : UIViewController <HomeCellDelegate, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIScrollViewDelegate>
 
 @end
 

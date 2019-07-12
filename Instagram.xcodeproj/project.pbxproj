@@ -18,6 +18,7 @@
 		A5685A2222D5553400064EA1 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5685A2122D5553400064EA1 /* ProfileViewController.m */; };
 		A5685A2522D55FCA00064EA1 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5685A2422D55FCA00064EA1 /* EditViewController.m */; };
 		A5685A2922D56F1500064EA1 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5685A2822D56F1500064EA1 /* PostCell.m */; };
+		A5685A3922D81D4900064EA1 /* InfiniteScrollActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5685A3822D81D4900064EA1 /* InfiniteScrollActivityView.m */; };
 		A5A1CB7C22D3ED4700419888 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A1CB7B22D3ED4700419888 /* Post.m */; };
 		A5A1CB8022D3EF0500419888 /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A1CB7F22D3EF0500419888 /* HomeCell.m */; };
 		A5A1CB8322D3FE2F00419888 /* NewPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A1CB8222D3FE2F00419888 /* NewPostViewController.m */; };
@@ -71,6 +72,8 @@
 		A5685A2422D55FCA00064EA1 /* EditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
 		A5685A2722D56F1500064EA1 /* PostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
 		A5685A2822D56F1500064EA1 /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
+		A5685A3722D81D4900064EA1 /* InfiniteScrollActivityView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InfiniteScrollActivityView.h; sourceTree = "<group>"; };
+		A5685A3822D81D4900064EA1 /* InfiniteScrollActivityView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InfiniteScrollActivityView.m; sourceTree = "<group>"; };
 		A5A1CB7A22D3ED4700419888 /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		A5A1CB7B22D3ED4700419888 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		A5A1CB7E22D3EF0500419888 /* HomeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCell.h; sourceTree = "<group>"; };
@@ -154,6 +157,7 @@
 		A56276E722D187010035BF92 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				A5685A3622D81D0300064EA1 /* Models */,
 				A5A1CB7D22D3EEE400419888 /* Views */,
 				A5C6348622D2A6BD008DF312 /* View Controllers */,
 				A56276E822D187010035BF92 /* AppDelegate.h */,
@@ -164,8 +168,6 @@
 				A56276F122D187020035BF92 /* Assets.xcassets */,
 				A56276F322D187020035BF92 /* LaunchScreen.storyboard */,
 				A56276F722D187020035BF92 /* main.m */,
-				A5A1CB7A22D3ED4700419888 /* Post.h */,
-				A5A1CB7B22D3ED4700419888 /* Post.m */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -188,6 +190,15 @@
 			path = InstagramUITests;
 			sourceTree = "<group>";
 		};
+		A5685A3622D81D0300064EA1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A5A1CB7A22D3ED4700419888 /* Post.h */,
+				A5A1CB7B22D3ED4700419888 /* Post.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		A5A1CB7D22D3EEE400419888 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +206,8 @@
 				A5A1CB7F22D3EF0500419888 /* HomeCell.m */,
 				A5685A2722D56F1500064EA1 /* PostCell.h */,
 				A5685A2822D56F1500064EA1 /* PostCell.m */,
+				A5685A3722D81D4900064EA1 /* InfiniteScrollActivityView.h */,
+				A5685A3822D81D4900064EA1 /* InfiniteScrollActivityView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -456,6 +469,7 @@
 				A5A1CB8322D3FE2F00419888 /* NewPostViewController.m in Sources */,
 				A5685A2222D5553400064EA1 /* ProfileViewController.m in Sources */,
 				A5A1CB8622D4481900419888 /* PostDetailsViewController.m in Sources */,
+				A5685A3922D81D4900064EA1 /* InfiniteScrollActivityView.m in Sources */,
 				A5A1CB8022D3EF0500419888 /* HomeCell.m in Sources */,
 				A5685A2522D55FCA00064EA1 /* EditViewController.m in Sources */,
 				A5A1CB7C22D3ED4700419888 /* Post.m in Sources */,

@@ -17,11 +17,14 @@
 #import "PostDetailsViewController.h"
 #import "DateTools.h"
 #import "ProfileViewController.h"
+#import "InfiniteScrollActivityView.h"
 
 @interface HomeViewController () 
 @property (strong, nonatomic) NSArray *posts;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (assign, nonatomic) BOOL isMoreDataLoading;
+@property (strong, nonatomic) InfiniteScrollActivityView *loadingMoreView;
 
 @end
 
@@ -29,14 +32,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSFontAttributeName:[UIFont fontWithName:@"No. Seven Regular" size:21]}];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    [self fetchPosts];
+    
+    // Set up Infinite Scroll loading indicator
+    CGRect frame = CGRectMake(0, self.tableView.contentSize.height, self.tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight);
+    self.loadingMoreView = [[InfiniteScrollActivityView alloc] initWithFrame:frame];
+    self.loadingMoreView.hidden = true;
+    [self.tableView addSubview:self.loadingMoreView];
+    
+    UIEdgeInsets insets = self.tableView.contentInset;
+    insets.bottom += InfiniteScrollActivityView.defaultHeight;
+    self.tableView.contentInset = insets;
+    
+    [self fetchPosts : false];
+    
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(fetchPosts:) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
-    // Do any additional setup after loading the view.
+    
 }
 
 - (IBAction)logout:(id)sender {
@@ -79,7 +95,6 @@
         [cell.likeButton setImage:unlikedIcon forState:UIControlStateNormal];
     }
     NSDate *date = cell.post.createdAt;
-    
     NSString *timeAgoString = [NSString stringWithFormat:@"%@", date.timeAgoSinceNow];
     cell.timestampLabel.text = timeAgoString;
     PFFileObject *userImageFile = cell.post.image;
@@ -97,24 +112,64 @@
     return cell;
     
 }
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    if(!self.isMoreDataLoading){
 
-- (void) fetchPosts
+        // Calculate the position of one screen length before the bottom of the results
+        int scrollViewContentHeight = self.tableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+        // When the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
+            self.isMoreDataLoading = true;
+            // Update position of loadingMoreView, and start loading indicator
+            CGRect frame = CGRectMake(0, self.tableView.contentSize.height, self.tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight);
+            self.loadingMoreView.frame = frame;
+            [self.loadingMoreView startAnimating];
+            [self fetchPosts: true];
+        }
+    }}
+- (void) fetchPosts : (BOOL) addToPrevious
 {
+    [SVProgressHUD show];
+
     // construct PFQuery
-    PFQuery *postQuery = [Post query];
+    PFQuery *postQuery;
+    if (addToPrevious)
+    {
+        Post *lastPost = self.posts[self.posts.count -1];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"createdAt < %@", lastPost.createdAt];
+        // construct query
+        postQuery = [PFQuery queryWithClassName:@"Post" predicate:predicate];
+    }
+    else
+    {
+        postQuery = [Post query];
+    }
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKey:@"author"];
     postQuery.limit = 20;
     
     // fetch data asynchronously
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
-        if (posts) {
-            self.posts = posts;
+        if (posts.count > 0) {
+            if (addToPrevious)
+            {
+                self.posts = [self.posts arrayByAddingObjectsFromArray:posts];
+                [self.loadingMoreView stopAnimating];
+                self.isMoreDataLoading = false;
+
+            }
+            else
+            {
+                self.posts = posts;
+            }
+        
             [self.tableView reloadData];
 
         }
         else {
-            NSLog(@"😫😫😫 Error getting home timeline: %@", error.localizedDescription);
+            NSLog(@"no posts to show!");
         }
         [self.refreshControl endRefreshing];
         [SVProgressHUD dismiss];
