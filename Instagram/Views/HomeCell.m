@@ -13,7 +13,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
+    UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapUserProfile:)];
+    [self.profileIcon addGestureRecognizer:profileTapGestureRecognizer];
+    [self.profileIcon setUserInteractionEnabled:YES];
     
 }
 
@@ -22,9 +24,12 @@
 
     // Configure the view for the selected state
 }
+- (void) didTapUserProfile:(UITapGestureRecognizer *)sender{
+    [self.delegate homeCell:self didTap:self.post.author];
+}
 - (IBAction)didTapFavorite:(id)sender
 {
-    Boolean *liked = NO;
+    Boolean liked = false;
     // Update the local post model
     // setting the post to unfavorited
     PFUser *currDude = [PFUser currentUser];
@@ -32,14 +37,11 @@
     {
         //update set
         [self.post addObject:currDude.username forKey:@"usersWhoLike"];
-        //update likecount
-       
-
     }
     
     else
     {
-        liked = YES;
+        liked = true;
         //update set
         [self.post removeObject:currDude.username forKey:@"usersWhoLike"];
     }
@@ -50,12 +52,13 @@
     [self.post saveInBackground];
 }
 
-- (void) refreshData: (Boolean *)liked
+- (void) refreshData: (Boolean)liked
 {
     UIImage *likedIcon = [UIImage imageNamed:@"noun_Love_1842236.png"];
     UIImage *unlikedIcon = [UIImage imageNamed:@"noun_Love_1938995.png"];
     self.numberOfLikes.text = [NSString stringWithFormat:@"%@", self.post.likeCount];
-    [self.likeButton setImage:likedIcon forState:UIControlStateNormal];
+    UIImage *chosenImage = liked ? unlikedIcon:likedIcon;
+    [self.likeButton setImage:chosenImage forState:UIControlStateNormal];
 }
 
 @end

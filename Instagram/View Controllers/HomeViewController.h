@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate>
+@interface HomeViewController : UIViewController <HomeCellDelegate, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate>
 
 @end
 

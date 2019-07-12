@@ -10,7 +10,9 @@
 #import "Parse/Parse.h"
 #import "Post.h"
 
+@protocol HomeCellDelegate;
 @interface HomeCell : UITableViewCell
+@property (nonatomic, weak) id<HomeCellDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *photo;
@@ -20,8 +22,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIImageView *profileIcon;
 @property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
-
 @property (strong, nonatomic) Post *post;
 
 @end
-
+@protocol HomeCellDelegate
+- (void)homeCell:(HomeCell *) homeCell didTap: (PFUser *)user;
+@end

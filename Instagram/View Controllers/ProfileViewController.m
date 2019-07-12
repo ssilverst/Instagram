@@ -14,7 +14,6 @@
 #import "PostDetailsViewController.h"
 
 @interface ProfileViewController ()
-@property (strong, nonatomic) PFUser *me;
 @property (strong, nonatomic) NSArray *posts;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UICollectionView *profilePostsView;
@@ -25,7 +24,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.me = [PFUser currentUser];
+    if (self.me == nil)
+    {
+        self.me = [PFUser currentUser];
+    }
 
     self.profilePostsView.dataSource = self;
     self.profilePostsView.delegate = self;
@@ -37,18 +39,23 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
-    self.me = [PFUser currentUser];
-
+    if (self.me == nil)
+    {
+        self.me = [PFUser currentUser];
+    }
     // Do any additional setup after loading the view.
     self.profileName.text = self.me[@"profileName"];
     self.profileDescription.text = self.me[@"profileDescription"];
+    self.profileUsername.text = self.me.username;
     PFFileObject *userImageFile = self.me[@"profileImage"];
     [userImageFile getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
         if (!error) {
             self.profileImage.image = [UIImage imageWithData:imageData];
+            self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width/2;
+
         }
     }];
-    
+    [self fetchPosts];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -65,6 +72,8 @@
 }
 - (void) fetchPosts
 {
+    [SVProgressHUD show];
+
     // construct PFQuery
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];

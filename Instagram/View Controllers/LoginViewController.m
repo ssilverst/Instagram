@@ -108,6 +108,7 @@
         } else {
             NSLog(@"User logged in successfully");
             
+
             [self performSegueWithIdentifier:@"loggedInSegue" sender:nil];
             
         }

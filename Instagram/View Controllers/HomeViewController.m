@@ -16,6 +16,7 @@
 #import "SVProgressHUD.h"
 #import "PostDetailsViewController.h"
 #import "DateTools.h"
+#import "ProfileViewController.h"
 
 @interface HomeViewController () 
 @property (strong, nonatomic) NSArray *posts;
@@ -28,7 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self fetchPosts];
@@ -48,6 +49,10 @@
         // PFUser.current() will now be nil
     }];
 }
+- (void)homeCell:(HomeCell *) homeCell didTap: (PFUser *)user
+{
+    [self performSegueWithIdentifier:@"profileSegue" sender:user];
+}
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.posts.count;
     
@@ -55,12 +60,24 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeCell"];
+    cell.delegate = self;
+
     cell.profileIcon.layer.cornerRadius = cell.profileIcon.frame.size.width/2;
     cell.post = self.posts[indexPath.row];
 
     cell.captionLabel.text = cell.post.caption;
     cell.usernameLabel.text = cell.post.author.username;
     cell.numberOfLikes.text = [NSString stringWithFormat:@"%@", cell.post.likeCount];
+    UIImage *likedIcon = [UIImage imageNamed:@"noun_Love_1842236.png"];
+    UIImage *unlikedIcon = [UIImage imageNamed:@"noun_Love_1938995.png"];
+    if ([cell.post.usersWhoLike containsObject:cell.post.author.username])
+    {
+        [cell.likeButton setImage:likedIcon forState:UIControlStateNormal];
+    }
+    else
+    {
+        [cell.likeButton setImage:unlikedIcon forState:UIControlStateNormal];
+    }
     NSDate *date = cell.post.createdAt;
     
     NSString *timeAgoString = [NSString stringWithFormat:@"%@", date.timeAgoSinceNow];
@@ -117,6 +134,10 @@
          UINavigationController *navigationController = [segue destinationViewController];
          PostDetailsViewController *deetController = (PostDetailsViewController *)navigationController.topViewController;
          deetController.post = post;
+     }
+     else if ([[segue identifier] isEqualToString:@"profileSegue"]){
+         ProfileViewController *profileController = [segue destinationViewController];
+         profileController.me = sender;
      }
  }
 
